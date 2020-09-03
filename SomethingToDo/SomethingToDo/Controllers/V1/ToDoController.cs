@@ -20,10 +20,16 @@ namespace SomethingToDo.Controllers.V1
             this.dataAccess = dataAccess;
         }
 
-        [HttpGet]
+        [HttpGet("buffer")]
         public IAsyncEnumerable<TodoDto> Get()
         {
             return dataAccess.GetTodoListAsync();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAsync()
+        {
+            return Ok(await dataAccess.GetTodoListTaskAsync());
         }
     }
 }

@@ -17,7 +17,15 @@ namespace SomethingToDo.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TodoItem>().HasData(new TodoItem { Id = 1, Name = "git", IsComplete = false });
+            TodoItem[] todoItem = new TodoItem[15000];
+
+            for (int i = 0; i < 15000; i++)
+            {
+                todoItem[i] = new TodoItem() { Id = i + 1, Name = "git", IsComplete = false };
+            }
+
+
+            modelBuilder.Entity<TodoItem>().HasData(todoItem);
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }

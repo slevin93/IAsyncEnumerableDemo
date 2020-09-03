@@ -33,7 +33,7 @@ namespace SomethingToDo
 
             services.AddApiVersioningExtension();
 
-            services.AddControllers();
+            services.AddControllers(options => options.MaxIAsyncEnumerableBufferLimit = 16384);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
